@@ -60,6 +60,15 @@ def create_vehicle():  # Создание транспорта
             print("Ошибка: Количество транспорта должно быть целым числом.")
     else: print("Тип указан неверно!")
 
+def create_driver():  # Создание водителя
+    name = input("Введите имя водителя: ")
+    if not name.isdigit():
+        try:
+            age = int(input("Введите возраст водителя: "))  # Преобразуем введенное значение в целое число
+            return Driver(name, age)
+        except ValueError:
+            print("Ошибка: Возраст водителя должен быть целым числом.")
+    else: print("Имя указано неверно!")
 def main():
     while True:
         print("\nМеню:")
