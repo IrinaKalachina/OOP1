@@ -24,6 +24,17 @@ class Company:
 
     def __str__(self):  # Метод перевода объекта в строку
         return self.__name
+class Vehicle:  # Класс транспорт
+    def __init__(self, tip, count):
+        self._tip = tip  # Тип авто
+        self._count = count  # Количество единиц
+
+    def tip(self):
+        return self._tip
+
+    def __str__(self):
+        return f"{self._tip} {self._count}"
+
 def main():
     while True:
         print("\nМеню:")
