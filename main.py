@@ -1,4 +1,29 @@
+class Company:
+    """Описание фирмы"""
 
+    def __init__(self, __name):  # Присвоение атрибутам значений
+        self.__name = __name  # Атрибуты
+        self.__vehicles = []  # транспорт
+        self.__drivers = []  # водители
+
+    """Методы"""
+
+    @property
+    def vehicles(self):
+        return self.__vehicles
+
+    @property
+    def drivers(self):
+        return self.__drivers
+
+    def add_vehicle(self, vehicle):  # Добавление транспорта в класс
+        self.__vehicles.append(vehicle)
+
+    def add_driver(self, driver):  # Добавление водителя в класс
+        self.__drivers.append(driver)
+
+    def __str__(self):  # Метод перевода объекта в строку
+        return self.__name
 def main():
     while True:
         print("\nМеню:")
