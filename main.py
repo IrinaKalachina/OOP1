@@ -35,6 +35,14 @@ class Vehicle:  # Класс транспорт
     def __str__(self):
         return f"{self._tip} {self._count}"
 
+class Driver:  # Класс водитель
+    def __init__(self, name, age):
+        self._name = name  # Имя
+        self._age = age  # Возраст
+
+    def __str__(self):
+        return f"{self._name} {self._age}"
+
 def main():
     while True:
         print("\nМеню:")
