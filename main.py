@@ -50,6 +50,16 @@ def create_company():  # Создание фирмы
     else:
         return Company(name)
 
+def create_vehicle():  # Создание транспорта
+    tip = input("Введите тип транспорта: ")
+    if not tip.isdigit():
+        try:
+            count = int(input("Введите количество единиц транспорта: "))  # Преобразуем введенное значение в целое число
+            return Vehicle(tip, count)
+        except ValueError:
+            print("Ошибка: Количество транспорта должно быть целым числом.")
+    else: print("Тип указан неверно!")
+
 def main():
     while True:
         print("\nМеню:")
