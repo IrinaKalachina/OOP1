@@ -28,7 +28,6 @@ class Vehicle:  # Класс транспорт
     def __init__(self, tip, count):
         self._tip = tip  # Тип авто
         self._count = count  # Количество единиц
-
     def tip(self):
         return self._tip
 
@@ -70,6 +69,7 @@ def create_driver():  # Создание водителя
             print("Ошибка: Возраст водителя должен быть целым числом.")
     else: print("Имя указано неверно!")
 def main():
+    companies = []
     while True:
         print("\nМеню:")
         print("1. Создать новую фирму\n"
@@ -83,7 +83,71 @@ def main():
 
         choice = input("Выберите действие: ")
 
-        if choice == "8":
+        if choice == "1":
+            company = create_company()
+            if company is not None:
+                companies.append(company)
+                print(f"Фирма '{company}' создана.")
+        elif choice == "2":
+            if not companies:
+                print("Сначала создайте фирму.")
+                continue
+            company_index = int(input("Введите номер фирмы для добавления транспорта: ")) - 1
+            if 0 <= company_index < len(companies):
+                vehicle = create_vehicle()
+                if vehicle is not None:
+                    companies[company_index].add_vehicle(vehicle)
+                    print(f"Транспорт '{vehicle}' добавлен к фирме '{companies[company_index]}'.")
+                else:
+                    print("Транспорт не был создан.")
+            else:
+                print("Неправильный номер фирмы.")
+        elif choice == "3":
+            if not companies:
+                print("Сначала создайте фирму.")
+                continue
+            company_index = int(input("Введите номер фирмы для добавления водителя: ")) - 1
+            if 0 <= company_index < len(companies):
+                driver = create_driver()
+                if driver is not None:
+                    companies[company_index].add_driver(driver)
+                    print(f"Водитель '{driver}' добавлен к фирме '{companies[company_index]}'.")
+                else:
+                    print("Водитель не был создан.")
+            else:
+                print("Неправильный номер фирмы.")
+        elif choice == "4":
+            print("\nСписок фирм:")
+            for i, company in enumerate(companies, start=1):
+                print(f"{i}. {company}")
+        elif choice == "5":
+            print("\nСписок транспорта:")
+            for i, company in enumerate(companies, start=1):
+                print(f"Транспорт у фирмы '{company}':")
+                for j, vehicle in enumerate(company.vehicles, start=1):
+                    print(f'{j}. {vehicle} единиц')
+        elif choice == "6":
+            print("\nСписок водителей:")
+            for company in companies:
+                print(f"Водители у фирмы '{company}':")
+                for driver in company.drivers:
+                    print(driver, ' лет')
+        elif choice == "7":
+            if not companies:
+                print("Нет доступных фирм.")
+                continue
+            company_index = int(input("Введите номер фирмы для просмотра (по порядку): ")) - 1
+            if 0 <= company_index < len(companies):
+                print(f"Фирма: {companies[company_index]}")
+                print("Транспорт:")
+                for vehicle in companies[company_index].vehicles:
+                    print(f"- {vehicle}")
+                print("Водители:")
+                for driver in companies[company_index].drivers:
+                    print(f'- {driver} лет')
+            else:
+                print("Неправильный номер фирмы.")
+        elif choice == "8":
             print("Программа завершена.")
             break
         else:
