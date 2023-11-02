@@ -13,6 +13,12 @@ def main():
 
         choice = input("Выберите действие: ")
 
+        if choice == "8":
+            print("Программа завершена.")
+            break
+        else:
+            print("Неправильный выбор. Попробуйте снова.")
+
 
 if __name__ == "__main__":
     main()
