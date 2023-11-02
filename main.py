@@ -43,6 +43,13 @@ class Driver:  # Класс водитель
     def __str__(self):
         return f"{self._name} {self._age}"
 
+def create_company():  # Создание фирмы
+    name = input("Введите название фирмы: ")
+    if not isinstance(name, str):
+        print("Название указано неверно!")
+    else:
+        return Company(name)
+
 def main():
     while True:
         print("\nМеню:")
