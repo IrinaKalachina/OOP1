@@ -16,15 +16,19 @@ class Company:
     def drivers(self):
         return self.__drivers
 
-    def add_vehicle(self, vehicle):  # Добавление транспорта в класс
+    def add_vehicle(self, vehicle):
+        """Добавление транспорта в класс"""
         self.__vehicles.append(vehicle)
 
-    def add_driver(self, driver):  # Добавление водителя в класс
+    def add_driver(self, driver):
+        """Добавление водителя в класс"""
         self.__drivers.append(driver)
 
-    def __str__(self):  # Метод перевода объекта в строку
+    def __str__(self):
+        """Метод перевода объекта в строку"""
         return self.__name
-class Vehicle:  # Класс транспорт
+class Vehicle:
+    """Класс транспорт"""
     def __init__(self, tip, count):
         self._tip = tip  # Тип авто
         self._count = count  # Количество единиц
@@ -35,7 +39,8 @@ class Vehicle:  # Класс транспорт
     def __str__(self):
         return f"{self._tip} {self._count}"
 
-class Driver:  # Класс водитель
+class Driver:
+    """Класс водитель"""
     def __init__(self, name, age):
         self._name = name  # Имя
         self._age = age  # Возраст
@@ -43,14 +48,16 @@ class Driver:  # Класс водитель
     def __str__(self):
         return f"{self._name} {self._age}"
 
-def create_company():  # Создание фирмы
+def create_company():
+    """Создание фирмы"""
     name = input("Введите название фирмы: ")
     if not isinstance(name, str):
         print("Название указано неверно!")
     else:
         return Company(name)
 
-def create_vehicle():  # Создание транспорта
+def create_vehicle():
+    """Создание транспорта"""
     tip = input("Введите тип транспорта: ")
     if not tip.isdigit():
         try:
@@ -60,7 +67,8 @@ def create_vehicle():  # Создание транспорта
             print("Ошибка: Количество транспорта должно быть целым числом.")
     else: print("Тип указан неверно!")
 
-def create_driver():  # Создание водителя
+def create_driver():
+    """Создание водителя"""
     name = input("Введите имя водителя: ")
     if not name.isdigit():
         try:
